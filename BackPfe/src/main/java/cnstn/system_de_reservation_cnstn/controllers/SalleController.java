@@ -9,10 +9,10 @@ import java.util.List;
 @RestController
 @RequestMapping("/Salle")
 public class SalleController {
-    private  SalleService salleService;
-    public void SalleService (SalleService salleService){
-        this.salleService=salleService;
+    private final SalleService salleService;
 
+    public SalleController(SalleService salleService) {
+        this.salleService = salleService;
     }
     @PostMapping("/add")
     public Salle Create(@RequestBody Salle salle){
@@ -24,5 +24,8 @@ public class SalleController {
         return salleService.findAll();
     }
 
-
+    @DeleteMapping("/{id}")
+    public void deleteSalle(@PathVariable Long id) {
+        salleService.deleteSalle(id);
+    }
 }

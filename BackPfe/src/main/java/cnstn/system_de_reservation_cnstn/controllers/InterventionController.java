@@ -10,7 +10,7 @@ import java.util.List;
 @RequestMapping("/Intervention")
 public class InterventionController {
 
-    private InterventionService interventionService;
+    private final InterventionService interventionService;
 
     public InterventionController(InterventionService interventionService) {
         this.interventionService = interventionService;
@@ -24,5 +24,10 @@ public class InterventionController {
     @GetMapping("/all")
     public List<Intervention> Affiche() {
         return interventionService.findAll();
+    }
+
+    @DeleteMapping("/{id}")
+    public void deleteIntervention(@PathVariable Long id) {
+        interventionService.deleteIntervention(id);
     }
 }

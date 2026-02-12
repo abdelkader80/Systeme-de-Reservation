@@ -10,7 +10,7 @@ import java.util.List;
 @RequestMapping("/CatDocument")
 public class CatDocumentController {
 
-    private CatDocumentService catDocumentService;
+    private final CatDocumentService catDocumentService;
 
     public CatDocumentController(CatDocumentService catDocumentService) {
         this.catDocumentService = catDocumentService;
@@ -24,5 +24,10 @@ public class CatDocumentController {
     @GetMapping("/all")
     public List<CatDocument> afficher() {
         return catDocumentService.findAll();
+    }
+
+    @DeleteMapping("/{id}")
+    public void deleteCatDocument(@PathVariable Long id) {
+        catDocumentService.deleteCatDocument(id);
     }
 }

@@ -5,6 +5,8 @@ import cnstn.system_de_reservation_cnstn.repository.CatDocumentRepository;
 import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 
@@ -20,5 +22,12 @@ public class CatDocumentService {
 
     public List<CatDocument> findAll() {
         return catDocumentRepository.findAll();
+    }
+
+    public void deleteCatDocument(Long id) {
+        if (!catDocumentRepository.existsById(id)) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "CatDocument not found with id " + id);
+        }
+        catDocumentRepository.deleteById(id);
     }
 }

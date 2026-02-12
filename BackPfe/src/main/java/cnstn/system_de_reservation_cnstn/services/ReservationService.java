@@ -1,17 +1,10 @@
 package cnstn.system_de_reservation_cnstn.services;
-// Définition du package service
-
 import cnstn.system_de_reservation_cnstn.models.Reservation;
-// Import de l’entité Reservation
-
 import cnstn.system_de_reservation_cnstn.repository.ReservationRepository;
-// Import du repository Reservation
-
 import lombok.RequiredArgsConstructor;
-// Lombok : génère automatiquement le constructeur avec les attributs final
-
 import org.springframework.stereotype.Service;
-// Indique que cette classe est un service Spring
+import org.springframework.http.HttpStatus;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 
@@ -28,4 +21,14 @@ public class ReservationService {
     public List<Reservation> findAll() {
         return reservationRepository.findAll();
     }
+
+    public void deleteReservation(Long id) {
+        if (!reservationRepository.existsById(id)) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Reservation not found with id " + id);
+
+        }
+        reservationRepository.deleteById(id);
+    }
+
 }
+
