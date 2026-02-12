@@ -17,9 +17,10 @@ public class Equipement {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String titre;
-    private String type;
-    private Date dateDebut;
+    private String nom;
+    private String etat;
+
+
    @ManyToOne(fetch = FetchType.LAZY)
     private Utilisateur utilisateur;
    @OneToMany(mappedBy = "equipement")

@@ -16,7 +16,11 @@ public class SalleService {
 
     }
     public List<Salle> findAll(){
+
         return saleRepository.findAll();
+    }
+    public List<Salle> rechercheNom(String nom){
+        return saleRepository.findByNomContainingIgnoreCase(nom);
     }
 
 }

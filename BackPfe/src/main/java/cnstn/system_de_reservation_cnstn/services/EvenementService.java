@@ -16,8 +16,13 @@ public  class EvenementService {
 
     }
     public List<Evenement> findAll(){
+
         return evenmentRepository.findAll();
     }
+    public List<Evenement> rechercher(String motCle) {
+               return evenmentRepository.findByTitreContainingIgnoreCaseOrTypeContainingIgnoreCase(motCle, motCle);
+    }
+
 }
 
 

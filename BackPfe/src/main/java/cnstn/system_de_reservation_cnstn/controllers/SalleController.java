@@ -10,7 +10,7 @@ import java.util.List;
 @RequestMapping("/Salle")
 public class SalleController {
     private  SalleService salleService;
-    public void SalleService (SalleService salleService){
+    public  SalleController (SalleService salleService){
         this.salleService=salleService;
 
     }
@@ -22,6 +22,10 @@ public class SalleController {
     @GetMapping("/all")
     public List<Salle> affiche(){
         return salleService.findAll();
+    }
+    @GetMapping("/search")
+    public List<Salle> search(@RequestParam String nom){
+        return salleService.rechercheNom(nom);
     }
 
 

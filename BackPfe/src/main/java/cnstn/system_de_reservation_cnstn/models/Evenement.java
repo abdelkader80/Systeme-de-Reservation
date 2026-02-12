@@ -28,6 +28,7 @@ public class Evenement {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String titre;
+    private String type;
     private String description;
     private Date dateDebut;
     private Date dateFin;

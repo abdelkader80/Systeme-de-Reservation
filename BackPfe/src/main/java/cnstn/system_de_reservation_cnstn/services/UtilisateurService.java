@@ -21,4 +21,7 @@ public class UtilisateurService {
 
         return utilisateurRepository.findAll();
     }
+    public List<Utilisateur> rechercherParNom(String nom) {
+        return utilisateurRepository.findByNomContainingIgnoreCase(nom);
+    }
 }

@@ -24,7 +24,13 @@ public class EvenementController {
     public List<Evenement> Affiche(){
 
         return evenementService.findAll();
+
     }
+    @GetMapping("/search")
+    public List<Evenement> search(@RequestParam String motCle) {
+        return evenementService.rechercher(motCle);
+    }
+
 
 
 }

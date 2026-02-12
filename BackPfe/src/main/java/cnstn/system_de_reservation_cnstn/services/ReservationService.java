@@ -28,4 +28,8 @@ public class ReservationService {
     public List<Reservation> findAll() {
         return reservationRepository.findAll();
     }
+    public List<Reservation> rechercheReservations(String type) {
+        return reservationRepository.findReservationByTypeContainingIgnoreCase(type);
+
+    }
 }

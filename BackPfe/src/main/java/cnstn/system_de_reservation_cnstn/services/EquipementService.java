@@ -20,4 +20,7 @@ public class EquipementService {
     public List<Equipement> findAll() {
         return equipementRepository.findAll();
     }
+    public List<Equipement> findByNomContainingIgnoreCase(String nom) {
+        return  equipementRepository.findByNomContainingIgnoreCase(nom);
+    }
 }

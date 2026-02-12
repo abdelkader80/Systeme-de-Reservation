@@ -27,5 +27,13 @@ public class UtilisateurController {
     public List<Utilisateur> afficher() {
         return utilisateurService.findAll();
     }
+    @GetMapping("/search")
+    public List<Utilisateur> rechercherUtilisateur(@RequestParam (required = false) String nom) {
+        if (nom == null || nom.isEmpty()) {
+            return utilisateurService.findAll();
+        }
+        return utilisateurService.rechercherParNom(nom);
+    }
+
 
 }

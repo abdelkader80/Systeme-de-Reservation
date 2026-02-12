@@ -1,4 +1,5 @@
 package cnstn.system_de_reservation_cnstn.controllers;
+
 import cnstn.system_de_reservation_cnstn.models.Reservation;
 import cnstn.system_de_reservation_cnstn.services.ReservationService;
 import org.springframework.web.bind.annotation.*;
@@ -24,6 +25,12 @@ public class ReservationController {
 
     @GetMapping("/all")
     public List<Reservation> afficher() {
+
         return reservationService.findAll();
+
+    }
+    @GetMapping("/search")
+    public List<Reservation> search(@RequestParam("type") String type) {
+        return reservationService.rechercheReservations(type);
     }
 }
