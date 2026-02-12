@@ -26,4 +26,9 @@ public class ReservationController {
     public List<Reservation> afficher() {
         return reservationService.findAll();
     }
+
+    @PutMapping("/update/{id}")
+    public Reservation update(@PathVariable Long id, @RequestBody Reservation reservation) {
+        return reservationService.update(id, reservation);
+    }
 }

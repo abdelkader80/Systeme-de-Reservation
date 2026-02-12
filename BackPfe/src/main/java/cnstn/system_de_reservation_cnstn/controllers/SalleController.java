@@ -24,5 +24,10 @@ public class SalleController {
         return salleService.findAll();
     }
 
+    @PutMapping("/update/{id}")
+    public Salle update(@PathVariable Long id, @RequestBody Salle salle) {
+        return salleService.update(id, salle);
+    }
+
 
 }

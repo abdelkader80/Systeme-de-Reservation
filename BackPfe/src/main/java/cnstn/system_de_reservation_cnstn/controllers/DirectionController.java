@@ -29,5 +29,10 @@ public class DirectionController {
         return directionService.findAll();
     }
 
+    @PutMapping("/update/{id}")
+    public Direction update(@PathVariable Long id, @RequestBody Direction direction) {
+        return directionService.update(id, direction);
+    }
+
 
 }

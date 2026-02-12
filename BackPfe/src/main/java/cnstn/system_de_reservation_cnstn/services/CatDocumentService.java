@@ -21,4 +21,11 @@ public class CatDocumentService {
     public List<CatDocument> findAll() {
         return catDocumentRepository.findAll();
     }
+
+    public CatDocument update(Long id, CatDocument updated) {
+        CatDocument existing = catDocumentRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("CatDocument not found: " + id));
+        existing.setNom(updated.getNom());
+        return catDocumentRepository.save(existing);
+    }
 }

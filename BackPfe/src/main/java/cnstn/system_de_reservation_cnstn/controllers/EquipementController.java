@@ -24,4 +24,9 @@ public class EquipementController {
     public List<Equipement> afficher(){
         return equipementService.findAll();
     }
+
+    @PutMapping("/update/{id}")
+    public Equipement update(@PathVariable Long id, @RequestBody Equipement equipement) {
+        return equipementService.update(id, equipement);
+    }
 }

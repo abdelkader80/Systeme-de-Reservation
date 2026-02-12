@@ -26,5 +26,10 @@ public class EvenementController {
         return evenementService.findAll();
     }
 
+    @PutMapping("/update/{id}")
+    public Evenement update(@PathVariable Long id, @RequestBody Evenement evenement) {
+        return evenementService.update(id, evenement);
+    }
+
 
 }

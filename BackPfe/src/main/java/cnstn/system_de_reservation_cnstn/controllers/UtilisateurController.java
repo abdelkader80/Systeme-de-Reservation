@@ -28,4 +28,9 @@ public class UtilisateurController {
         return utilisateurService.findAll();
     }
 
+    @PutMapping("/update/{id}")
+    public Utilisateur update(@PathVariable Long id, @RequestBody Utilisateur utilisateur) {
+        return utilisateurService.update(id, utilisateur);
+    }
+
 }

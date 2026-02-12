@@ -28,4 +28,16 @@ public class ReservationService {
     public List<Reservation> findAll() {
         return reservationRepository.findAll();
     }
+
+    public Reservation update(Long id, Reservation updated) {
+        Reservation existing = reservationRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Reservation not found: " + id));
+        existing.setDateDebut(updated.getDateDebut());
+        existing.setDateFin(updated.getDateFin());
+        existing.setType(updated.getType());
+        existing.setUtilisateur(updated.getUtilisateur());
+        existing.setEquipement(updated.getEquipement());
+        existing.setSalle(updated.getSalle());
+        return reservationRepository.save(existing);
+    }
 }

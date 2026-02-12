@@ -20,4 +20,14 @@ public class EquipementService {
     public List<Equipement> findAll() {
         return equipementRepository.findAll();
     }
+
+    public Equipement update(Long id, Equipement updated) {
+        Equipement existing = equipementRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Equipement not found: " + id));
+        existing.setTitre(updated.getTitre());
+        existing.setType(updated.getType());
+        existing.setDateDebut(updated.getDateDebut());
+        existing.setUtilisateur(updated.getUtilisateur());
+        return equipementRepository.save(existing);
+    }
 }

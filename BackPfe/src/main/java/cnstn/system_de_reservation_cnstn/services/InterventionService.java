@@ -17,4 +17,15 @@ public class InterventionService {
     public List<Intervention> findAll(){
         return interventionRepository.findAll();
     }
+
+    public Intervention update(Long id, Intervention updated) {
+        Intervention existing = interventionRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Intervention not found: " + id));
+        existing.setDescription(updated.getDescription());
+        existing.setStatut(updated.getStatut());
+        existing.setDateDemande(updated.getDateDemande());
+        existing.setUtilisateur(updated.getUtilisateur());
+        existing.setEquipement(updated.getEquipement());
+        return interventionRepository.save(existing);
+    }
 }

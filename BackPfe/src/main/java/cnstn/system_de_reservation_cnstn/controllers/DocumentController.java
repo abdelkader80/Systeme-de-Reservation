@@ -25,4 +25,9 @@ public class DocumentController {
     public List<Document> afficher() {
         return documentService.findAll();
     }
+
+    @PutMapping("/update/{id}")
+    public Document update(@PathVariable Long id, @RequestBody Document document) {
+        return documentService.update(id, document);
+    }
 }

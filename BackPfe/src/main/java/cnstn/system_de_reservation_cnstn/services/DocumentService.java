@@ -21,4 +21,16 @@ public class DocumentService {
     public List<Document> findAll() {
         return documentRepository.findAll();
     }
+
+    public Document update(Long id, Document updated) {
+        Document existing = documentRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Document not found: " + id));
+        existing.setTitre(updated.getTitre());
+        existing.setType(updated.getType());
+        existing.setChemin(updated.getChemin());
+        existing.setNiveauAcces(updated.getNiveauAcces());
+        existing.setEvenement(updated.getEvenement());
+        existing.setCatDocument(updated.getCatDocument());
+        return documentRepository.save(existing);
+    }
 }

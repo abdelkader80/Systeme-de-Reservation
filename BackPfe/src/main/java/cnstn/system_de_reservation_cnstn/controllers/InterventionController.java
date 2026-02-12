@@ -25,4 +25,9 @@ public class InterventionController {
     public List<Intervention> Affiche() {
         return interventionService.findAll();
     }
+
+    @PutMapping("/update/{id}")
+    public Intervention update(@PathVariable Long id, @RequestBody Intervention intervention) {
+        return interventionService.update(id, intervention);
+    }
 }
