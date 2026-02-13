@@ -4,6 +4,7 @@ import cnstn.system_de_reservation_cnstn.models.Utilisateur;
 import cnstn.system_de_reservation_cnstn.models.Utilisateur;
 import cnstn.system_de_reservation_cnstn.services.UtilisateurService;
 import cnstn.system_de_reservation_cnstn.services.UtilisateurService;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -26,6 +27,12 @@ public class UtilisateurController {
     @GetMapping("/all")
     public List<Utilisateur> afficher() {
         return utilisateurService.findAll();
+    }
+    // Supprimer un document par son ID
+    @DeleteMapping("/{id}")
+    public ResponseEntity<?> deleteUtilisateur(@PathVariable Long id) {
+        utilisateurService.deleteService(id);
+        return ResponseEntity.noContent().build();
     }
 
 }

@@ -24,5 +24,6 @@ public class Document {
     @ManyToOne(fetch = FetchType.LAZY)
     private CatDocument catDocument;
 
+
 }
 

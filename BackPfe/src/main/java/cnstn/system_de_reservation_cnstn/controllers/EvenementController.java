@@ -2,6 +2,7 @@ package cnstn.system_de_reservation_cnstn.controllers;
 
 import cnstn.system_de_reservation_cnstn.models.Evenement;
 import cnstn.system_de_reservation_cnstn.services.EvenementService;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -24,6 +25,11 @@ public class EvenementController {
     public List<Evenement> Affiche(){
 
         return evenementService.findAll();
+    }
+    @DeleteMapping("/{id}")
+    public ResponseEntity<?> deleteEvenement(@PathVariable Long id) {
+        evenementService.deleteService(id);
+        return ResponseEntity.noContent().build();
     }
 
 
